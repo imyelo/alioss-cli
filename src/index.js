@@ -45,7 +45,7 @@ const upload = function *({ prefix, cwd, patterns, ...options }) {
     return store.put(`${prefix}${file}`, `${cwd}${file}`)
   }), 3)
   spinner.stop()
-  console.log(`total ${files.length} files success √', files.length`)
+  console.log(`total ${files.length} files success √'`)
   return objects
 }
 
