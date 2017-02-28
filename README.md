@@ -5,19 +5,19 @@
 1. 下载项目
 
 	```sh
-    git clone git@192.168.1.216:yelo/alioss-cli.git && cd alioss-cli
-    ```
+		git clone git@192.168.1.216:yelo/alioss-cli.git && cd alioss-cli
+		```
 
 2. 安装依赖包
 
 	```sh
-    yarn
-    ```
+		yarn
+		```
 
 3. 映射可执行文件
 
 	```sh
-    npm link
+		npm link
 	```
 
 ## 如何使用
@@ -25,8 +25,8 @@
 2. 进入项目目录，执行上传操作
 
 	```sh
-    alioss
-    ```
+		alioss
+		```
 
 ## 配置文件
 配置文件的存放规则可以参考 [rc standards](https://github.com/dominictarr/rc#standards)，文件名为 *.aliossrc*。
@@ -57,7 +57,7 @@ oss 的 region。如 ``oss-cn-hangzhou``。
 
 **prefix**
 
-上传至 oss 的目录前缀。如 ``/myproject/static``。
+上传至 oss 的目录前缀。如 ``/myproject/static/``。
 
 
 **cwd**
@@ -74,13 +74,13 @@ oss 的 region。如 ``oss-cn-hangzhou``。
 完整的配置文件如下：
 ```
 {
-  "accessKeyId": "...",
-  "accessKeySecret": "...",
-  "bucket": "mybucket",
-  "region": "oss-cn-hangzhou",
-  "prefix": "/myproject/static",
-  "cwd": "build/static/",
-  "patterns": "**/*"
+	"accessKeyId": "...",
+	"accessKeySecret": "...",
+	"bucket": "mybucket",
+	"region": "oss-cn-hangzhou",
+	"prefix": "/myproject/static/",
+	"cwd": "build/static/",
+	"patterns": "**/*"
 }
 ```
 
@@ -89,13 +89,13 @@ oss 的 region。如 ``oss-cn-hangzhou``。
 文件结构：
 
 ```tree
-    - ~
-      - .aliossrc # 存放 oss 敏感信息，即 accessKeyId, accessKeySecret, bucket, region
-      - ...
-    - projects
-      - myproject # 项目根目录
-        - .aliossrc # 存放 prefix, cwd, patterns
-        - ...
+		- ~
+			- .aliossrc # 存放 oss 敏感信息，即 accessKeyId, accessKeySecret, bucket, region
+			- ...
+		- projects
+			- myproject # 项目根目录
+				- .aliossrc # 存放 prefix, cwd, patterns
+				- ...
 ```
 
 在每次发布过程中，待静态文件编译完成后，进入项目根目录执行 ``alioss``。
