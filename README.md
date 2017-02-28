@@ -5,7 +5,7 @@
 1. 下载项目
 
 	```sh
-    git clone git@192.168.1.216:yelo/alioss.git && cd alioss
+    git clone git@192.168.1.216:yelo/alioss-cli.git && cd alioss-cli
     ```
 
 2. 安装依赖包
