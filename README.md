@@ -2,23 +2,9 @@
 > 快速上传文件至阿里云对象存储服务
 
 ## 安装
-1. 下载项目
-
-	```sh
-		git clone git@192.168.1.216:yelo/alioss-cli.git && cd alioss-cli
-		```
-
-2. 安装依赖包
-
-	```sh
-		yarn
-		```
-
-3. 映射可执行文件
-
-	```sh
-		npm link
-	```
+```
+npm i -g @yelo/alioss-cli
+```
 
 ## 如何使用
 1. 为项目新建文件 *.aliossrc*，配置内容参考下一章节。

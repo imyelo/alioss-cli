@@ -1,12 +1,11 @@
 {
   "name": "@yelo/alioss-cli",
   "version": "1.0.0",
-  "private": true,
   "main": "babel-entry.js",
   "bin": {
     "alioss": "./babel-entry.js"
   },
-  "repository": "git@192.168.1.216:yelo/alioss-cli.git",
+  "repository": "git@github.com:imyelo/alioss-cli.git",
   "author": "yelo <zhihuzeye@gmail.com>",
   "license": "MIT",
   "dependencies": {
