@@ -26,7 +26,7 @@ npm i -g @yelo/alioss-cli
 oss 的 accessKeyId。
 
 
-**accessKeySecret*
+**accessKeySecret**
 
 oss 的 accessKeySecret。
 
