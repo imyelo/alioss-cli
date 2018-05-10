@@ -1,6 +1,6 @@
 {
   "name": "@yelo/alioss-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "babel-entry.js",
   "bin": {
     "alioss": "./babel-entry.js"
