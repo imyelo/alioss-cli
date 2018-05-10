@@ -15,22 +15,27 @@ const debug = Debug('alioss')
 const APPNAME = 'alioss'
 
 const config = rc(APPNAME, {
-  accessKeyId: null,
-  accessKeySecret: null,
-  bucket: null,
-  region: null,
-  cwd: null,
-  patterns: null,
+  accessKeyId: void 0,
+  accessKeySecret: void 0,
+  stsToken: void 0,
+  bucket: void 0,
+  endpoint: void 0,
+  region: void 0,
+  internal: void 0,
+  secure: void 0,
+  timeout: void 0,
+  cwd: void 0,
+  patterns: void 0,
   prefix: '/'
 })
 
 debug(JSON.stringify(config, null, 2))
 
-if (_.some(_.pick(config, 'accessKeyId', 'accessKeySecret', 'bucket', 'region', 'cwd', 'patterns'), (val) => val === null)) {
+if (_.some(_.pick(config, 'accessKeyId', 'accessKeySecret', 'cwd', 'patterns'), (val) => typeof val === 'undefined')) {
   throw new Error('invalid config')
 }
 
-const store = oss(_.pick(config, 'accessKeyId', 'accessKeySecret', 'bucket', 'region'))
+const store = oss(_.omitBy(_.pick(config, 'accessKeyId', 'accessKeySecret', 'stsToken', 'bucket', 'endpoint', 'region', 'internal', 'secure', 'timeout'), (val) => typeof val === 'undefined'))
 
 const upload = function *({ prefix, cwd, patterns, ...options }) {
   let spinner, files, objects
