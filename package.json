@@ -5,6 +5,9 @@
   "bin": {
     "alioss": "./src/index.js"
   },
+  "files": [
+    "src"
+  ],
   "engines": {
     "node": ">=8.0.0"
   },
@@ -13,19 +16,11 @@
   "license": "MIT",
   "dependencies": {
     "ali-oss": "^6.1.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-register": "^6.23.0",
     "debug": "^2.6.1",
     "globby": "^6.1.0",
     "lodash": "^4.17.4",
     "ora": "^1.1.0",
     "p-all": "^2.0.0",
-    "parallel": "^1.1.0",
     "rc": "^1.1.7"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-stage-0": "^6.22.0"
   }
 }
