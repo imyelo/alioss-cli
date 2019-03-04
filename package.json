@@ -1,23 +1,25 @@
 {
   "name": "@yelo/alioss-cli",
   "version": "1.1.0",
-  "main": "babel-entry.js",
+  "main": "src/index.js",
   "bin": {
-    "alioss": "./babel-entry.js"
+    "alioss": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   },
   "repository": "git@github.com:imyelo/alioss-cli.git",
   "author": "yelo <zhihuzeye@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ali-oss": "^4.8.0",
+    "ali-oss": "^6.1.0",
     "babel-polyfill": "^6.23.0",
     "babel-register": "^6.23.0",
-    "co": "^4.6.0",
-    "co-parallel": "^1.0.0",
     "debug": "^2.6.1",
     "globby": "^6.1.0",
     "lodash": "^4.17.4",
     "ora": "^1.1.0",
+    "p-all": "^2.0.0",
     "parallel": "^1.1.0",
     "rc": "^1.1.7"
   },

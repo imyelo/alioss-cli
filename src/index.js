@@ -1,14 +1,12 @@
 #!/usr/bin/env node
 
-import 'babel-polyfill'
-import _ from 'lodash'
-import oss from 'ali-oss'
-import co from 'co'
-import ora from 'ora'
-import parallel from 'co-parallel'
-import globby from 'globby'
-import rc from 'rc'
-import Debug from 'debug'
+const _ = require('lodash')
+const oss = require('ali-oss')
+const ora = require('ora')
+const parallel = require('p-all')
+const globby = require('globby')
+const rc = require('rc')
+const Debug = require('debug')
 
 const debug = Debug('alioss')
 
@@ -37,25 +35,27 @@ if (_.some(_.pick(config, 'accessKeyId', 'accessKeySecret', 'cwd', 'patterns'), 
 
 const store = oss(_.omitBy(_.pick(config, 'accessKeyId', 'accessKeySecret', 'stsToken', 'bucket', 'endpoint', 'region', 'internal', 'secure', 'timeout'), (val) => typeof val === 'undefined'))
 
-const upload = function *({ prefix, cwd, patterns, ...options }) {
+const upload = async function ({ prefix, cwd, patterns }) {
   let spinner, files, objects
   spinner = ora('uploading')
   spinner.start()
-  files = yield globby(patterns, {
+  files = await globby(patterns, {
     cwd,
     nodir: true
   })
   spinner.text = `uploading ${files.length} files from ${cwd} to ${prefix}...`
-  objects = yield parallel(files.map(function (file) {
-    return store.put(`${prefix}${file}`, `${cwd}${file}`)
-  }), 3)
+  objects = await parallel(files.map((file) => () =>
+    store.put(`${prefix}${file}`, `${cwd}${file}`)
+  ), { concurrency: 3 })
   spinner.stop()
   console.log(`total ${files.length} files success √'`)
   return objects
 }
 
-co(function *() {
-  yield upload(_.pick(config, 'prefix', 'cwd', 'patterns'))
-}).catch(function (err) {
-  console.error(err)
-})
+;(async function () {
+  try {
+    await upload(_.pick(config, 'prefix', 'cwd', 'patterns'))
+  } catch (error) {
+    console.error(error)
+  }
+})()
